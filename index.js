@@ -459,6 +459,12 @@ app.get('/setlive', function (req, res) {
     })
 })
 
+app.get('/', function (req, res) {
+    res.send({
+        "islidsdsdsdve":"ssddsds"
+    })
+})
+
 app.listen(3000,()=>{
 
     console.log("server is running on port 3000");
