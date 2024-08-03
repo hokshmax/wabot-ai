@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - MahmoudAiBot
+name: Build and deploy Node.js app to Azure Web App - mahmoudAiBot
 
 on:
   push:
@@ -25,9 +25,7 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-#          node index.js
-
-#          npm run test --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -44,9 +42,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
@@ -56,18 +52,11 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2F15A1FD16784AEF9AA6FC78975BEF14 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_47FB50126A4C490D94DA0863E3225B44 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CC95EC6668A34AB7A3B7C57D318D5E23 }}
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'MahmoudAiBot'
+          app-name: 'mahmoudAiBot'
           slot-name: 'Production'
           package: .
-          
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7354AA0323A84036A5A0C73312D62C00 }}
