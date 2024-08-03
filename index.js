@@ -445,7 +445,7 @@ client.on('message', async msg => {
 
 
 
-client.initialize();
+// client.initialize();
 
 app.get('/getlive', function (req, res) {
     res.status(200).json({
