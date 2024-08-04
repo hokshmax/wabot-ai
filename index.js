@@ -470,9 +470,11 @@ app.get('/', function (req, res) {
 
 async function ddd() {
     const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium-browser', // Path to the Chromium browser installed on the system
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
+
 
     browser.on('disconnected', () => {
         console.error('Browser disconnected!');
