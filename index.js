@@ -468,28 +468,6 @@ app.get('/', function (req, res) {
     })
 })
 
-async function ddd() {
-    const browser = await puppeteer.launch({
-        executablePath: '/usr/bin/chromium-browser', // Path to the Chromium browser installed on the system
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-
-
-    browser.on('disconnected', () => {
-        console.error('Browser disconnected!');
-    });
-
-    const page = await browser.newPage();
-    page.on('error', err => {
-        console.error('Page error: ', err);
-    });
-    page.on('pageerror', err => {
-        console.error('Page uncaught exception: ', err);
-    });
-}
-
-ddd()
 
 
 app.listen(8080,()=>{
