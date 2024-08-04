@@ -4,6 +4,7 @@ const qrcode = require('qrcode-terminal');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require('express')
 const app = express()
+const puppeteer = require('puppeteer-core');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI("AIzaSyCRqP3uWVZZID0N-SwM00ONG_bLg7XHzjo");
@@ -467,6 +468,26 @@ app.get('/', function (req, res) {
     })
 })
 
+async function ddd() {
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+
+    browser.on('disconnected', () => {
+        console.error('Browser disconnected!');
+    });
+
+    const page = await browser.newPage();
+    page.on('error', err => {
+        console.error('Page error: ', err);
+    });
+    page.on('pageerror', err => {
+        console.error('Page uncaught exception: ', err);
+    });
+}
+
+ddd()
 
 
 app.listen(8080,()=>{
