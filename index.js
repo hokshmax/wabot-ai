@@ -447,7 +447,6 @@ client.on('message', async msg => {
 
 //
 
-client.initialize();
 
 
 app.get('/getlive', function (req, res) {
@@ -468,6 +467,12 @@ app.get('/', function (req, res) {
     })
 })
 
+
+
 app.listen(8080,()=>{
-    console.log("server is running on port 3000");
+    console.log("server is running on port hokahmaxxxxx");
+    client.initialize();
+
 })
+
+
