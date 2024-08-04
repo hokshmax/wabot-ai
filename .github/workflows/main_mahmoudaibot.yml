@@ -94,3 +94,5 @@ jobs:
           app-name: mahmoudAiBot
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_129D99944C2D47A597D56FB6BD66CE22 }}
           package: .
+
+###
