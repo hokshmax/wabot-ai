@@ -364,7 +364,7 @@ const client = new Client();
 var cmd ="";
 client.on('qr', (qr) => {
     // Generate and scan this code with your phone
-    qrcode.generate(qr, {small: true});
+  qrcode.generate(qr, {small: true});
 
 });
 
@@ -445,7 +445,7 @@ client.on('message', async msg => {
 
 
 
-// client.initialize();
+//
 
 app.get('/getlive', function (req, res) {
     res.status(200).json({
@@ -466,6 +466,6 @@ app.get('/', function (req, res) {
 })
 
 app.listen(8080,()=>{
-
+    client.initialize();
     console.log("server is running on port 3000");
 })
