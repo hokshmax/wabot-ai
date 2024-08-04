@@ -447,6 +447,9 @@ client.on('message', async msg => {
 
 //
 
+client.initialize();
+
+
 app.get('/getlive', function (req, res) {
     res.status(200).json({
         "islive":islive
@@ -466,6 +469,5 @@ app.get('/', function (req, res) {
 })
 
 app.listen(8080,()=>{
-    client.initialize();
     console.log("server is running on port 3000");
 })
