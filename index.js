@@ -5,6 +5,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require('express')
 const app = express()
 const puppeteer = require('puppeteer-core');
+const { execSync } = require('child_process');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI("AIzaSyCRqP3uWVZZID0N-SwM00ONG_bLg7XHzjo");
@@ -361,7 +362,24 @@ const chat = model.startChat({
     },
 });
 
-const client = new Client();
+(async () => {
+    try {
+        const chromiumPath = execSync('which chromium-browser').toString().trim();
+        console.log(`Chromium path: ${chromiumPath}`);
+
+        const browser = await puppeteer.launch({
+            executablePath: chromiumPath,
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+
+        const client = new Client({
+            puppeteer: {
+                executablePath: chromiumPath,
+                headless: true,
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
+            }
+        });
 var cmd ="";
 client.on('qr', (qr) => {
     // Generate and scan this code with your phone
@@ -444,7 +462,12 @@ client.on('message', async msg => {
 
 });
 
+        client.initialize();
 
+    } catch (error) {
+        console.error('Error:', error);
+    }
+})();
 
 //
 
@@ -472,7 +495,6 @@ app.get('/', function (req, res) {
 
 app.listen(8080,()=>{
     console.log("server is running on port hokahmaxxxx...,x");
-    client.initialize();
 
 })
 
