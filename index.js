@@ -366,7 +366,7 @@ const chat = model.startChat({
     try {
 
 
-        const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || 'chromium-browser';
+        const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
 
         // const browser = await puppeteer.launch({
         //     headless: true,

@@ -123,9 +123,7 @@ jobs:
             libnss3 \
             lsb-release \
             xdg-utils \
-            wget \
-            chromium-browser \
-            libgbm-dev
+            wget
 
       - name: Install Dependencies and Puppeteer
         run: |
