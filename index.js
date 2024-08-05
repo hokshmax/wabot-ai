@@ -364,7 +364,14 @@ const chat = model.startChat({
 
 (async () => {
     try {
-        const chromiumPath = execSync('which chromium-browser').toString().trim();
+        let chromiumPath;
+        try {
+            chromiumPath = execSync('which chromium-browser').toString().trim();
+        } catch (error) {
+            console.error('Chromium not found in default path, trying alternative method...');
+            chromiumPath = '/usr/bin/chromium-browser'; // specify a default path
+        }
+
         console.log(`Chromium path: ${chromiumPath}`);
 
         const browser = await puppeteer.launch({
