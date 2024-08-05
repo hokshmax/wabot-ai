@@ -4,7 +4,7 @@ const qrcode = require('qrcode-terminal');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require('express')
 const app = express()
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const { execSync } = require('child_process');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
@@ -366,7 +366,7 @@ const chat = model.startChat({
     try {
 
 
-        const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+        const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium-browser';
 
         // const browser = await puppeteer.launch({
         //     headless: true,
