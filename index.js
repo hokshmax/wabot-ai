@@ -4,7 +4,7 @@ const qrcode = require('qrcode-terminal');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const express = require('express')
 const app = express()
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
 const { execSync } = require('child_process');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
@@ -364,25 +364,15 @@ const chat = model.startChat({
 
 (async () => {
     try {
-        let chromiumPath;
-        try {
-            chromiumPath = execSync('which chromium-browser').toString().trim();
-        } catch (error) {
-            console.error('Chromium not found in default path, trying alternative method...');
-            chromiumPath = '/usr/bin/chromium-browser'; // specify a default path
-        }
 
-        console.log(`Chromium path: ${chromiumPath}`);
 
         const browser = await puppeteer.launch({
-            executablePath: chromiumPath,
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
         const client = new Client({
             puppeteer: {
-                executablePath: chromiumPath,
                 headless: true,
                 args: ['--no-sandbox', '--disable-setuid-sandbox']
             }

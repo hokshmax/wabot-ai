@@ -82,10 +82,11 @@ jobs:
 
       - name: Install Chromium
         run: |
-            sudo apt-get update
-            sudo apt-get install -y chromium-browser
-            which chromium-browser
-            chromium-browser --version
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          sudo apt-get install -y libgbm-dev
+          which chromium-browser
+          chromium-browser --version
 
       - name: Install Required Packages
         run: |
