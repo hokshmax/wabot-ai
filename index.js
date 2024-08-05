@@ -368,11 +368,11 @@ const chat = model.startChat({
 
         const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || 'chromium-browser';
 
-        const browser = await puppeteer.launch({
-            headless: true,
-            executablePath: executablePath,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
-        });
+        // const browser = await puppeteer.launch({
+        //     headless: true,
+        //     executablePath: executablePath,
+        //     args: ['--no-sandbox', '--disable-setuid-sandbox']
+        // });
 
         console.log('Chromium launched successfully.');
 
