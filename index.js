@@ -366,14 +366,21 @@ const chat = model.startChat({
     try {
 
 
+        const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || 'chromium-browser';
+
         const browser = await puppeteer.launch({
             headless: true,
+            executablePath: executablePath,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
+        console.log('Chromium launched successfully.');
+
+        // Setup WhatsApp client with puppeteer
         const client = new Client({
             puppeteer: {
                 headless: true,
+                executablePath: executablePath,
                 args: ['--no-sandbox', '--disable-setuid-sandbox']
             }
         });
