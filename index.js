@@ -366,8 +366,8 @@ const chat = model.startChat({
     try {
 
 
-        const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium-browser';
-        const browser = await puppeteer.connect({ browserWSEndpoint: 'wss://chrome.browserless.io/' });
+        // const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium-browser';
+        // const browser = await puppeteer.connect({ browserWSEndpoint: 'wss://chrome.browserless.io/' });
 
         // const browser = await puppeteer.launch({
         //     headless: true,
@@ -379,11 +379,11 @@ const chat = model.startChat({
 
         // Setup WhatsApp client with puppeteer
         const client = new Client({
-            puppeteer: {
-                headless: true,
-                executablePath: executablePath,
-                args: ['--no-sandbox', '--disable-setuid-sandbox']
-            }
+            // puppeteer: {
+            //     headless: true,
+            //     executablePath: executablePath,
+            //     args: ['--no-sandbox', '--disable-setuid-sandbox']
+            // }
         });
 var cmd ="";
 client.on('qr', (qr) => {
