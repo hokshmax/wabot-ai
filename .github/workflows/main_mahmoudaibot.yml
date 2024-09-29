@@ -71,16 +71,18 @@ jobs:
 
       - name: Install Node.js Dependencies
         run: npm install
+      - name: run server
+        run: node index.js
 
-      - name: Install Puppeteer Chromium
-        run: npx puppeteer install
+#      - name: Install Puppeteer Chromium
+#        run: npx puppeteer install
+#
+#      - name: Set PUPPETEER_EXECUTABLE_PATH
+#        run: echo "PUPPETEER_EXECUTABLE_PATH=$(npx puppeteer executable-path)" >> $GITHUB_ENV
 
-      - name: Set PUPPETEER_EXECUTABLE_PATH
-        run: echo "PUPPETEER_EXECUTABLE_PATH=$(npx puppeteer executable-path)" >> $GITHUB_ENV
-
-      - name: Deploy to Azure App Service
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: mahmoudAiBot
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_129D99944C2D47A597D56FB6BD66CE22 }}
-          package: .
+#      - name: Deploy to Azure App Service
+#        uses: azure/webapps-deploy@v2
+#        with:
+#          app-name: mahmoudAiBot
+#          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_129D99944C2D47A597D56FB6BD66CE22 }}
+#          package: .

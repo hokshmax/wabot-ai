@@ -367,6 +367,7 @@ const chat = model.startChat({
 
 
         const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium-browser';
+        const browser = await puppeteer.connect({ browserWSEndpoint: 'wss://chrome.browserless.io/' });
 
         // const browser = await puppeteer.launch({
         //     headless: true,
