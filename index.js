@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer-core');
 const { execSync } = require('child_process');
 
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI("AIzaSyCRqP3uWVZZID0N-SwM00ONG_bLg7XHzjo");
+const genAI = new GoogleGenerativeAI(process.env.googlekey);
 
 // ...
 
@@ -490,11 +490,6 @@ app.get('/setlive', function (req, res) {
     })
 })
 
-app.get('/', function (req, res) {
-    res.send({
-        "islidsdsdsdve":"ssddsds"
-    })
-})
 
 
 
