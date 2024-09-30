@@ -61,6 +61,11 @@ jobs:
             wget \
             libgbm-dev
 
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo googlekey=${{ secrets.googlekey }} >> .env
+          cat .env
       - name: Install Chromium
         run: |
           sudo apt-get update
